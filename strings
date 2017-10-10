@@ -1,0 +1,5 @@
+var str = 'Tech Gnome';
+// returns string with no spaces
+var newStr = str.replace(/\W/g, '');
+console.log(newStr); // TechGnome
+
