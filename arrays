@@ -1,0 +1,78 @@
+// Arrays
+
+ar = ["1", "2", "3", "4", "5"];
+// removes 1st element
+ar.shift();
+// ["2","3","4","5"];
+
+ar = ["1", "2", "3", "4", "5"];
+// adds objects to front of the array
+ar.unshift("9", "8");
+// ["9", "8", 2","3","4","5"];
+
+ar = ["1", "2", "3", "4", "5"];
+// adds to end of the array
+ar.push("6");
+// ["1","2","3","4", "5", "6"];
+
+ar = ["1", "2", "3", "4", "5"];
+// removes last element
+ar.pop();
+// ["1","2","3","4"];
+
+ar = ["1", "2", "3", "4", "5"];
+ar.join();
+// "1, 2, 3, 4, 5";
+ar.join("");
+// "12345";
+ar.join("-");
+// "1-2-3-4-5";
+
+ar = ["1", "2", "3", "4", "5"];
+ar.toString();
+// "1, 2, 3, 4, 5";
+
+ar = ["1", "2", "3", "4", "5"];
+// removes all elements after the first index
+ar.splice(1);
+// ["1"];
+ar.splice(2);
+// ["1", "2"];
+ar.splice(-1);
+// ["5"];
+// returns removes first element
+ar.splice(1);
+// ["2", "3", "4", "5"];
+// start at 2 index, remove none, add "joe"
+ar.splice(2, 0, "joe");
+// ["1", "2", "3", "joe", "4", "5"];
+// start at index 1, remove 2, add "joe"
+ar.splice(1, 2, "joe");
+// ["1", "joe", "4", "5"];
+
+ar = ["1", "2", "3", "4", "5"];
+ar.reverse();
+// ["1","2","3","4","5"];
+
+var flagAdd = false;
+var queue = [];
+queue.push(2);
+// queue is now [2]
+queue.push(5);
+queue.push("Joe");
+// queue is now [2]
+queue.push("Ausby");
+// queue is now [2, 5]
+
+// ex. use of the queue
+while (queue.length > 0) {
+    if( queue.length === 1 && flagAdd === false)
+    {
+        // appends to the end of the array
+        queue.push("Jr");
+        flagAdd = true;
+    }
+    var val = queue.shift();
+    alert(val);
+}
+alert("done");
