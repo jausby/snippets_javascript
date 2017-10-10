@@ -1,0 +1,19 @@
+// Objects
+
+var foobar = {
+    name:"TechGnome",
+    level:"Expert",
+    getName : function(){
+        return this.name;
+    }
+}
+console.log(foobar.getName());
+console.log(foobar["name"]);
+
+function Foobar2(name, level){
+    this.name = name;
+    this.level = level;
+}
+var foobar2 = new Foobar2("TechGnome", "Expert");
+console.log(foobar2.name);
+console.log(foobar2["name"]);
