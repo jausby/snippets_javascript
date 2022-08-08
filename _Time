@@ -1,0 +1,47 @@
+    function _Time(includeSeconds = false, includeMiliSeconds = false) {
+        // function optionally allows the caller to add seconds and miliseconds
+        var ampm = 'AM';
+        var date = new Date();
+        //var month = (date.getMonth() + 1).toString().trim().length === 2 ? date.getMonth() + 1 : "0" + (date.getMonth() + 1);
+        //var day = date.getDate().toString().trim().length === 2 ? date.getDate() : "0" + date.getDate();
+        //var year = date.getFullYear();
+        //var d = month + "/" + day + "/" + year;
+        var h = date.getHours().toString().trim().length === 2 ? date.getHours() : "0" + date.getHours();
+        if (h > 12) {
+            h = h - 12;
+            h = h.toString().trim().length === 2 ? h : "0" + h;
+        }
+        if (date.getHours() >= 12) {
+            ampm = 'PM';
+        }
+
+        //var m = date.getMinutes().toString().trim().length === 2 ? date.getMinutes() : "0" + date.getMinutes();
+        //var s = date.getSeconds().toString().trim().length === 2 ? date.getSeconds() : "0" + date.getSeconds();
+        //var ms = date.getMilliseconds().toString().trim().length === 3 ? date.getMilliseconds() : padZero(date.getMilliseconds(), 3);
+        //var t =
+        //    h + ":" +
+        //    m + ":" +
+        //    s + "." +
+        //    ms;
+
+        var m = date.getMinutes().toString().trim().length === 2 ? date.getMinutes() : "0" + date.getMinutes();
+        var s = date.getSeconds().toString().trim().length === 2 ? ":" + date.getSeconds() : ":0" + date.getSeconds();
+        var ms = date.getMilliseconds().toString().trim().length === 3 ? "." + date.getMilliseconds() : "." + padZero(date.getMilliseconds(), 3);
+
+        if (includeSeconds !== true) {
+            s = '';
+            ms = '';
+        }
+
+        if (includeSeconds !== true || includeMiliSeconds !== true) {
+            ms = '';
+        }
+
+        var t =
+            h + ":" +
+            m +
+            s +
+            ms;
+
+        return t + ' ' + ampm;
+    }
