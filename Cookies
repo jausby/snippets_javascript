@@ -6,18 +6,33 @@ function SetCookie(cname, cvalue, exdays) {
 }
 
 function GetCookie(cname) {
-    var name = cname + "=";
-    var decodedCookie = decodeURIComponent(document.cookie);
-    var ca = decodedCookie.split(';');
-    for (var i = 0; i < ca.length; i++) {
-        var c = ca[i];
-        while (c.charAt(0) === ' ') {
-            c = c.substring(1);
-        }
-        if (c.indexOf(name) === 0) {
-            return c.substring(name.length, c.length);
+    // cookie size limitation is = 4093
+    // create a cookie
+    // document.cookie = "someCookieName = " + "some string";
+    // create a cookie of an object
+    // document.cookie = "someCookieName = " + JSON.stringify(some object);
+    // retrieve a cookie
+    // this.getCookie('someCookieName');
+    // retrieve a cookie from an object
+    // JSON.parse(this.getCookie('someCookieName'));
+
+    if (typeof cname !== 'undefined' && cname !== null && cname.toString().trim().length > 0) {
+        // pass in the string name of the cookie to retrieve
+        // NOTE: json objects must be serialized before storing in a cookie
+        var name = cname + "=";
+        var decodedCookie = decodeURIComponent(document.cookie);
+        var ca = decodedCookie.split(';');
+        for (var i = 0; i < ca.length; i++) {
+            var c = ca[i];
+            while (c.charAt(0) === ' ') {
+                c = c.substring(1);
+            }
+            if (c.indexOf(name) === 0) {
+                return c.substring(name.length, c.length);
+            }
         }
     }
+    // console.log(this.getDateTime() + " - " + 'Invalid Cookie: ' + cname);
     return "";
 }
 
@@ -25,8 +40,5 @@ function GetCookie(cname) {
 var cookie = null;
 cookie = GetCookie('somecookiesname');
 if (typeof cookie !== 'undefined' && cookie !== null && cookie.toString().trim().length > 0) {
-      var cookie_value = cookie.toString().trim();
-}
-else {
-      return;
+    var cookie_value = cookie.toString().trim();
 }
